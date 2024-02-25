@@ -3,7 +3,7 @@ const courseModel = require('../models/course');
 module.exports = {
     getCourse,
     createCourse,
-    updateCourse,
+    updateCourseData,
     deleteCourse
     }
 
@@ -30,9 +30,11 @@ async function createCourse(req, res) {
     }
 }
 
-async function updateCourse(req, res) {
+async function updateCourseData(req, res) {
+    console.log(req.param)
+    const { id } = req.params;
     try {
-        const courseData = await courseModel.updateCourse(req.params.id, req.body);
+        const courseData = await courseModel.updateCourse(id, req.body);
         res.json(courseData);
     } catch (err) {
         res.status(500).json({ errorMsg: err.message });
@@ -41,8 +43,8 @@ async function updateCourse(req, res) {
 
 async function deleteCourse(req, res) {
     try {
-        const courseData = await courseModel.deleteCourse(req.params.id);
-        res.json(courseData);
+        const courseData = await courseModel.deleteCourse(req.params.entryId);
+        res.status(204).json(courseData);
     } catch (err) {
         res.status(500).json({ errorMsg: err.message });
     }

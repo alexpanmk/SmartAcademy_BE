@@ -14,23 +14,22 @@ async function getCourse(queryFields) {
 
 
 async function createCourse(courseData) {
-    return course.create(courseData)
+    return course.create(courseData);
 }
 
-async function updateCourse() {
-    try {
-        const courseData = await course.updateCourse(req.params.id, req.body);
-        res.json(courseData);
-    } catch (err) {
-        res.status(500).json({ errorMsg: err.message });
-    }
+async function updateCourse(entryID, entryData) {
+    console.log(entryID);
+    return course.findByIdAndUpdate(entryID, entryData, {new: true});
 }
 
-async function deleteCourse(req, res) {
-    try {
-        const courseData = await course.deleteCourse(req.params.id);
-        res.json(courseData);
-    } catch (err) {
-        res.status(500).json({ errorMsg: err.message });
-    }
+// Update a journal entry
+// function updateJournalEntry(entryId, entryData) {
+//     return JournalEntry.findByIdAndUpdate(entryId, entryData, { new: true }); // { new: true } returns the updated document
+// }
+
+async function deleteCourse(courseId) {
+  
+
+       return course.findByIdAndDelete(courseId);
+
 }
