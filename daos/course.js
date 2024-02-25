@@ -28,18 +28,18 @@ const CourseSchema = new Schema({
     type: String,
     required: true
   },
-  createdBy: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
+  // createdBy: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'User',
+  //   required: true
+  // },
   questions: [QuestionSchema] // Embedding questions directly in the quiz document
 });
 
 // Compile the schema into a model
-const Quiz = mongoose.model('Course', CourseSchema);
+const Quiz = mongoose.model('Question', QuestionSchema);
 
-module.exports = Course;
+module.exports = mongoose.model('Course', CourseSchema);
   
 
 
