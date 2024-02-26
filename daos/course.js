@@ -8,7 +8,7 @@ const QuestionSchema = new Schema({
     type: String,
     required: true
   },
-  //MCQ, YoutubeLink, Text
+  //Hijacking the QuestionScheme to show other resources needed. MCQ, YoutubeLink, Text
   questionType: {
     type: String,
     required: true
