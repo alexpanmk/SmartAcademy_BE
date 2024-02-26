@@ -8,6 +8,11 @@ const QuestionSchema = new Schema({
     type: String,
     required: true
   },
+  //MCQ, YoutubeLink, Text
+  questionType: {
+    type: String,
+    required: true
+  },
   options: [{
     type: String,
     required: true

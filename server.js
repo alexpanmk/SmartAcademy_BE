@@ -1,3 +1,5 @@
+
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -24,6 +26,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// const corsOptions = {
+//   origin: 'http://localhost:3000',
+//   optionsSuccessStatus: 200 // For legacy browser support
+// };
 
 //TODO: Remeber to add cors options 
 app.use(cors()); 
