@@ -1,4 +1,6 @@
+const sendResponse = require('../helpers/sendResponse');
 const courseModel = require('../models/course');
+
 
 module.exports = {
     getCourse,
