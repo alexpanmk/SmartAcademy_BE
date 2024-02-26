@@ -3,23 +3,27 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Define a schema for Quiz Questions
-const QuestionSchema = new Schema({
-  questionText: {
+const ContentItemSchema = new Schema({
+  ItemText: {
     type: String,
     required: true
   },
   //Hijacking the QuestionScheme to show other resources needed. MCQ, YoutubeLink, Text
-  questionType: {
+  ItemType: {
     type: String,
     required: true
   },
+  itemURL: {
+    type: String,
+    required: false
+  },
   options: [{
     type: String,
-    required: true
+    required: false
   }],
   correctAnswer: {
     type: String,
-    required: true
+    required: false
   }
 });
 
@@ -38,11 +42,11 @@ const CourseSchema = new Schema({
   //   ref: 'User',
   //   required: true
   // },
-  questions: [QuestionSchema] // Embedding questions directly in the quiz document
+  content: [ContentItemSchema] // Embedding questions directly in the quiz document
 });
 
 // Compile the schema into a model
-const Quiz = mongoose.model('Question', QuestionSchema);
+const Quiz = mongoose.model('Question', ContentItemSchema);
 
 module.exports = mongoose.model('Course', CourseSchema);
   
