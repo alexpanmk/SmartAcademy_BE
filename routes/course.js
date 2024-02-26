@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const courseController = require('../controllers/course');
+const clerkSDK = require('@clerk/clerk-sdk-node');
+
+const ClerkExpressRequireAuth = clerkSDK.ClerkExpressRequireAuth;
 
 // GET /course
 router.get('/', courseController.getCourse);
