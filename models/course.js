@@ -2,6 +2,7 @@ const course = require('../daos/course');
 
 module.exports = {
     getCourse,
+    getCourseById,
     createCourse,
     updateCourse,
     deleteCourse
@@ -11,6 +12,9 @@ async function getCourse(queryFields) {
    return course.find(queryFields);
 }
 
+async function getCourseById(entryId) {
+    return course.findById(entryId);
+}
 
 
 async function createCourse(courseData) {

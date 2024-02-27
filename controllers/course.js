@@ -4,13 +4,14 @@ const courseModel = require('../models/course');
 
 module.exports = {
     getCourse,
+    getCourseById,
     createCourse,
     updateCourseData,
     deleteCourse
     }
 
 async function getCourse(req, res) {
-    console.log(req.query)
+   
     try {
         const courseData = await courseModel.getCourse(req.query);
         res.json({courses: courseData})
@@ -19,7 +20,16 @@ async function getCourse(req, res) {
     }
 }
 
+async function getCourseById(req, res) {
+    console.log("FindbyID")
 
+    try {
+        const courseData = await courseModel.getCourseById(req.params.entryId);
+        res.json(courseData);
+    } catch (err) {
+        res.status(500).json({ errorMsg: err.message });
+    }
+}
 
 async function createCourse(req, res) {
 

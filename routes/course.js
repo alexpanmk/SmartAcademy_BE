@@ -6,7 +6,9 @@ const clerkSDK = require('@clerk/clerk-sdk-node');
 const ClerkExpressRequireAuth = clerkSDK.ClerkExpressRequireAuth;
 
 // GET /course
-router.get('/', courseController.getCourse);
+router.get('/', courseController.getCourseById);
+
+router.get('/:entryId', courseController.getCourseById);
 
 // POST /course
 router.post('/', courseController.createCourse);

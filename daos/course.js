@@ -17,6 +17,10 @@ const ContentItemSchema = new Schema({
     type: String,
     required: false
   },
+  question: {
+    type: String,
+    required: false
+  },
   options: [{
     type: String,
     required: false
@@ -36,6 +40,11 @@ const CourseSchema = new Schema({
   description: {
     type: String,
     required: true
+  },
+  //Learner score for the quiz
+  score: {
+    type: Number,
+    required: false
   },
   // createdBy: {
   //   type: Schema.Types.ObjectId,
