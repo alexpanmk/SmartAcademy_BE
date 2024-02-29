@@ -1,3 +1,6 @@
+module.exports = {
+    verifyClerkSession
+};
 
 async function verifyClerkSession(req, res, next) {
   try {
@@ -20,4 +23,3 @@ async function verifyClerkSession(req, res, next) {
   }
 }
 
-export default verifyClerkSession;

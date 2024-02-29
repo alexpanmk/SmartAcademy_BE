@@ -1,12 +1,16 @@
-
-
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
-// var securityMiddleware = require('./middlewares/security');
+
+var { Clerk } = require('@clerk/clerk-sdk-node');
+const clerk = Clerk(process.env.CLERK_API_KEY);
+
+var verifyClerkSession = require('./middleware/verifyClerkSession');
+
+// var securityMiddleware = require('./middleware/security');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
