@@ -4,20 +4,13 @@ const Schema = mongoose.Schema;
 
 // Define a schema for Quiz Questions
 const ContentItemSchema = new Schema({
-  ItemText: {
+  
+  questionType:{
     type: String,
     required: true
   },
-  //Hijacking the QuestionScheme to show other resources needed. MCQ, YoutubeLink, Text
-  ItemType: {
-    type: String,
-    required: true
-  },
-  itemURL: {
-    type: String,
-    required: false
-  },
-  question: {
+
+  questionText: {
     type: String,
     required: false
   },
@@ -41,7 +34,7 @@ const CourseSchema = new Schema({
     type: String,
     required: true
   },
-  //Learner score for the quiz
+  //Learner score for the quiz, if score exist learner completes the course
   score: {
     type: Number,
     required: false
@@ -51,7 +44,7 @@ const CourseSchema = new Schema({
   //   ref: 'User',
   //   required: true
   // },
-  content: [ContentItemSchema] // Embedding questions directly in the quiz document
+  questions: [ContentItemSchema] // Embedding questions directly in the quiz document
 });
 
 // Compile the schema into a model
