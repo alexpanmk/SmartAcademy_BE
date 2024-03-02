@@ -5,8 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors');
 
-var { Clerk } = require('@clerk/clerk-sdk-node');
-const clerk = Clerk(process.env.CLERK_API_KEY);
+
 
 var verifyClerkSession = require('./middleware/verifyClerkSession');
 

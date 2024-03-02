@@ -2,12 +2,60 @@ const modelUsers = require("../models/users")
 
 // highlight-start
 module.exports = {
+    getUser,
     getUsers,
     getLoginDetails,
     logoutUser,
     loginUser,
     createUser
 }
+
+
+async function getUser(req, res) {
+    try {
+        const userData = await modelUsers.getUsers(req.query);
+        res.json({users: userData})
+    } catch (err) {
+        res.status(500).json({ errorMsg: err.message });
+    }
+}
+
+
+async function loginUser(req, res) {
+  
+  console.log(req.auth)
+
+  res.json(req.auth);
+
+  try {
+      // const token = await modelUsers.loginUser(req.body);
+      // if (!token.success) {
+      //   res.status(400).json({errorMsg: token.error})
+      //   return 
+      // }
+      // // console.log (token.data)
+      // res.json(token.data)
+  } catch (err) {
+    // console.log (err);
+    //   res.status(500).json({ errorMsg: err.message });
+  }
+}
+
+// async function loginUser(req, res) {
+  
+//   try {
+//       const token = await modelUsers.loginUser(req.body);
+//       if (!token.success) {
+//         res.status(400).json({errorMsg: token.error})
+//         return 
+//       }
+//       // console.log (token.data)
+//       res.json(token.data)
+//   } catch (err) {
+//     console.log (err);
+//       res.status(500).json({ errorMsg: err.message });
+//   }
+// }
 
 async function getUsers(req, res) {
     try {
@@ -31,21 +79,7 @@ async function getLoginDetails(req, res) {
   }
 }
 
-async function loginUser(req, res) {
-  
-  try {
-      const token = await modelUsers.loginUser(req.body);
-      if (!token.success) {
-        res.status(400).json({errorMsg: token.error})
-        return 
-      }
-      // console.log (token.data)
-      res.json(token.data)
-  } catch (err) {
-    console.log (err);
-      res.status(500).json({ errorMsg: err.message });
-  }
-}
+
 
 async function logoutUser(req, res) {
   try {

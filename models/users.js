@@ -1,6 +1,6 @@
 const { urlencoded } = require("express");
 const daoUser = require("../daos/users")
-const utilSecurity = require("../util/security")
+// const utilSecurity = require("../util/security")
 
 module.exports = {
     getUsers,
@@ -11,6 +11,18 @@ module.exports = {
     returnUserIDbyEmail,
     returnEmailbyUserID,
   };
+
+
+async function createUser(body) {
+    //
+    const user = await daoUser.findOne({"userId": body.email});
+    console.log(user);
+    if (user) {
+      return {success: false, error: "user already exist"};
+    }
+    const newUser = await daoUser.create(body);
+    return {success: true, data: newUser};
+  }
 
 function getUsers(queryFields) {
     return daoUser.find(queryFields);
@@ -58,16 +70,7 @@ async function loginUser(body) {
   return {success: true, data: token}
 }
 
-async function createUser(body) {
-    //
-    const user = await daoUser.findOne({"email": body.email});
-    console.log(user);
-    if (user) {
-      return {success: false, error: "user already exist"};
-    }
-    const newUser = await daoUser.create(body);
-    return {success: true, data: newUser};
-  }
+
 
 async function logoutUser(body) {
   if (!body.hasOwnProperty("email")) {

@@ -6,7 +6,7 @@ const userSchema = new Schema({
     clerk_id: {
         type: String,
         required: true,
-        unique: true
+        // unique: true
       },
     first_name: {
         type: String,
